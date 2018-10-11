@@ -22,6 +22,13 @@
       </div>
     </header>
 
+     <div class="input-group  col-md-6 text-center" style="left: 20%">
+        <input type="text" class="form-control">
+        <div class="input-group-append">
+          <button class="btn-sm btn-success">Search</button>
+        </div>
+      </div>
+
     <!-- Main Content -->
     <div class="container">
       <div class="row">
