@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="logo">
-                        <a href="<?php echo index_for('index.php'); ?>" style="color: #222; text-decoration: none;"><h1>Oprextra</h1></a>
+                        <a href="<?php echo url_for_index('index.php'); ?>" style="color: #222; text-decoration: none;"><h1>Oprextra</h1></a>
                     </div>
                     <!-- Logo Section -->
                 </div>

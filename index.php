@@ -1,105 +1,79 @@
 <?php require_once('./private/initialize.php') ?>
-<?php require_once(SHARED_PATH .'/index_html_header.php'); ?>
+<?php require_once(SHARED_PATH. '/index_html_header.php') ?>
 
-<body id="page-top" data-spy="scroll" data-target=".navbar">
+  <body>
 
-  <?php require_once(SHARED_PATH .'/public_header.php'); ?>
-  <?php require_once(SHARED_PATH .'/public_sub_header.php'); ?>      
+   <?php require_once(SHARED_PATH. '/index_navigation_header.php') ?>
 
 
-    <div class="container">
-        
-            <div class="col content-middle col-75">
-        <div class="content-dark">
-            
-            <div class="content-light">
-                
-                <!--posts -->
-                  <ul class="forum-cat">
-
-                <?php require_once(SHARED_PATH .'/public_posts.php'); ?>  
-
-                <?php require_once(SHARED_PATH .'/public_navigation.php'); ?>
-                       
-                  </ul>
-                
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('./posts/img/home-bg.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+              <h1>Oprextra Income</h1>
+              <span class="subheading">Get in on latest updates</span>
+               <span class="subheading">Earn while reading and sharing posts!</span>
             </div>
-
-         
-
-            <!-- Headlines -->
- 
-   <?php 
-         
-         if(!isset($query_string)) {
-            
-            require_once(SHARED_PATH .'/public_headlines.php');
-         }
-         else {
-            // need this div to keep adverts in place
-            echo "<div class=\"content-light headlines\" id=\"most-viewed\">";
-         }
-
-    
-   ?>            
-
- 
-                                     
-                   
-
-
-               
-            </div>
-
+          </div>
         </div>
-    </div>
-                
-            <aside class="col col-30 sidebar sidebar-right">
-    <div class="content-dark">
-        <h4>Sponsored ads</h4>
-                                                                                                    <div class="widget">
-            <!--a href="c.jumia.io/?a=102624&c=624&p=r&E=kkYNyk2M4sk%3d&utm_source=cake&utm_medium=affiliation&utm_campaign=102624&utm_term=" target="_blank">
-                <img src="https://affiliates.jumia.com/banners/Jumia Nigeria/EverythingonJumia/320x480.jpg"/></a-->
-                        </div>
-                        <br>
-         <div class="widget">
-                        <a href="com/article/12505"><img src="#"/></a>
-                        </div>
-                        <br>
-                                                        
-    </div>
-</aside>  
+      </div>
+    </header>
 
-                
-            <aside class="col col-30 sidebar sidebar-right">
-    <div class="content-dark">
-        <h4>Sponsored</h4>
-                                                                                                    <div class="widget">
-<a href="wqwqwqw" target="_blank">
-<div class="ad" style="border: 1px #31a931 solid; margin-bottom:15px; width: 100%;" >
-<img src="info/addimages/201803192305353741levcon_advirtisement.png"  style="width:100%;">
-</div>
-</a>
-  
-                        </div>
-                        <br>
-                                                                                                                                <div class="widget">
-                         <!--a href="https://blogsng.com/" target="_blank">
-<img src="#" /></a-->
-                        </div>
-                        <br>
-                                                        
-    </div>
-</aside>  
-                
-     </div>    
-<!--end of index.php-->
+    <!-- Main Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+        
+            <?php echo require_once(SHARED_PATH . '/index_headlines.php') ?>
+          <hr>
+          
 
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; Oprextra 2018</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
- 
+    <script src="js/clean-blog.min.js"></script>
 
- <?php require_once(SHARED_PATH .'/public_top_footer.php'); ?>
- <?php require_once(SHARED_PATH .'/public_footer.php'); ?>
+  </body>
 
-    
+</html>

@@ -13,9 +13,10 @@ require_once('../../private/initialize.php');
   
 ?>
 
-<?php require_once(SHARED_PATH .'/html_header.php'); ?><body id="page-top" data-spy="scroll" data-target=".navbar">
+<?php require_once(SHARED_PATH .'/public_html_header.php'); ?>
+<body id="page-top" data-spy="scroll" data-target=".navbar">
   <?php require_once(SHARED_PATH .'/public_header.php'); ?>
-  <?php require_once(SHARED_PATH .'/public_sub_header.php'); ?>      
+  <?php require_once(SHARED_PATH .'/public_navigation_header.php'); ?>     
 
 
                                   

@@ -60,7 +60,7 @@ require_once('../../private/validate_posts.php');
   }
 
 ?>
-<?php require_once( SHARED_PATH .'/admin_html_head.php'); ?>
+<?php require_once( SHARED_PATH .'/admin_html_header.php'); ?>
 
 <body class="animsition">
     <div class="page-wrapper">

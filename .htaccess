@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /public_html/
+
+RewriteCond %{REQUEST_FILENAME} !-d [NC]
+RewriteCond %{REQUEST_FILENAME} !-f [NC]
+RewriteRule ^(.*)$ view_post.php?id=$1 [QSA,L]

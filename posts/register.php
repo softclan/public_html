@@ -1,7 +1,7 @@
 <?php
 
 include_once('../private/initialize.php');
- require_once(SHARED_PATH .'/html_header.php');
+  require_once(SHARED_PATH. '/register_html_header.php'); 
 
 ?>
 

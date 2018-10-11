@@ -2,7 +2,7 @@
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
-                        <a href="<?php echo index_for('/index.php') ?>">
+                        <a href="<?php echo url_for_index('/index.php') ?>">
                             <h2 style="color: #fff;">Oprextra</h2>
                         </a>
                     </div>
