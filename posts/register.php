@@ -44,6 +44,7 @@ include_once('../private/initialize.php');
                     <div class="container-login100">
                         <div class="wrap-login100">
                             <form class="login100-form validate-form" method="POST">
+                            <div id='error-box' style='color:red;display:none'></div>
                                 <span class="login100-form-title p-b-43">
                                     Register to Continue
                                 </span>
@@ -85,7 +86,7 @@ include_once('../private/initialize.php');
                                 </div>
             
                                 <div class="wrap-input100 validate-input" data-validate="Password is required">
-                                    <input class="input100" type="password" name="Password"">
+                                    <input class="input100" type="password" name="Password2"">
                                     <span class="focus-input100"></span>
                                     <span class="label-input100">Confirm Password</span>
                                 </div>
@@ -97,14 +98,7 @@ include_once('../private/initialize.php');
                                             Remember me
                                         </label>
                                     </div>
-            
-                                    <div>
-                                        <a href="#" class="txt1">
-                                            Forgot Password?
-                                        </a>
-                                    </div>
                                 </div>
-                        
             
                                 <div class="container-login100-form-btn">
                                     <input class="login100-form-btn" type="submit" name="register" value="Register">
@@ -180,8 +174,10 @@ exit();
     exit();
     }
 
-    if ($Password!==$Password){
-        echo"script>alert('Passwords do not match')</script>";
+    if ($_POST['Password']!= $_POST['Password2'])
+    {
+        echo"<script>alert('Oops! Password did not match! Try again. ')</script>";
+        exit();
     }
 
     if($AccountNumber=='')
