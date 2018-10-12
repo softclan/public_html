@@ -10,20 +10,23 @@ if(!filter_var($UserEmail, FILTER_VALIDATE_EMAIL)){
 }
 
 
-$check_user="select * from users WHERE UserEmail='$UserEmail'";
+$check_user="select UserEmail from users WHERE UserEmail='$UserEmail'";
 $run=mysqli_query($db,$check_user);
 
 if (mysqli_num_rows($run) == 0) {
 echo ('Sorry, Your emails does not exists in our record');
 }
 else{
-    $query = "SELECT DisplayName FROM users WHERE UserEmail = '$UserEmail' ";
-    $r=mysqli_query($db,$query);
-     
+    
     //create a new random password
     
     $Password = substr(md5(uniqid(rand(),1)),3,10);
     $Password = md5($Password); //encrypted version for database entry
+    $sql = "UPDATE users SET Password='$Password' WHERE UserEmail = '$UserEmail'";
+    if (mysqli_query($db, $sql)){
+        echo ('Password has been changed successfully');
+        $rsent = true;
+    }
     //send email
 $to = "$UserEmail";
 $subject = "Password Recovery";
@@ -38,9 +41,6 @@ $lheaders= "From: <contact@oprextra.com>rn";
 $lheaders.= "Reply-To: noprely@oprextra.com";
 
 mail($to, $subject, $body, $lheaders);
-//update database
-$sql = "UPDATE users SET Password='$Password' WHERE UserEmail = '$UserEmail'";
-$rsent = true;
 if ($rsent == true){
     echo "<p>Just sent an email with your account details to $UserEmail</p>n";
     echo redirect_to('../');    
