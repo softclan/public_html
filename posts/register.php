@@ -155,7 +155,8 @@ if(isset($_POST['register']))
     $Name=$_POST['Name'];//here getting result from the post array after submitting the form.
     $DisplayName=$_POST['DisplayName'];//same
     $UserEmail=$_POST['UserEmail'];//same
-    $Password=$_POST['Password'];//same
+    $Password= $_POST['Password'];//same
+    $password_hash = md5($Password);
     $AccountNumber=$_POST['AccountNumber'];//same
     $BankName=$_POST['$BankName'];//same
     $_SESSION['DisplayName'] = $_POST['DisplayName'];
@@ -200,27 +201,24 @@ echo "<script>alert('Email $UserEmail is already exist in our database, Please t
 exit();
 }
 //insert the user into the database.
+    $Password = md5($Password);
     $insert_user="insert into users (Name,Password,UserEmail, DisplayName, BankName, AccountNumber) VALUE ('$Name','$Password','$UserEmail', '$DisplayName', '$BankName', '$AccountNumber')";
     if(mysqli_query($db,$insert_user))
 
     {
-        echo"<script>window.open('activateme.php','_self')</script>";
-    }
-
-}
-if(!empty($check_email_query)){
-    $query_user = "SELECT * FROM users";
-    while($user_id=mysqli_fetch_array($run_query)){
-    $user_id = $user_id['UserID'];
+        $UserID = $UserID['UserID'];
     $link="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"."activateme.php?id=" . $user_id;
     $toEmail = $_POST["email"];
     $subject = "email Activation";
     $content = "Click this link to activate your account. <a href='" . $link . "'>" . $link . "</a>";
     $mailHeaders = "From: Oprextra\r\n";
-    if(mail($toEmail, $subject, $content, $mailHeaders)) {
-    $message = "Thank you For registering with us, check you email to activate your account.";	
-        }
-       }
+    mail($toEmail, $subject, $content, $mailHeaders);
+        echo"<script>window.open('thank-you.php','_self')</script>";
     }
 
+}
+    if (isset($_POST['remember-me'])){
+        session_set_cookie_params('604800');//one week in seconds
+        session_regenerate_id(true);
+    }
 ?>

@@ -8,8 +8,6 @@ if(isset($_POST['submit']))
 {
     $UserEmail=$_POST['UserEmail'];
     $Password=$_POST['Password'];
-    $DisplayName=$_POST['DisplayName'];
-    $_SESSION['DisplayName'] = $_POST['DisplayName'];
 
     $check_user="select * from users WHERE UserEmail='$UserEmail'AND Password='$Password'";
     $query = mysqli_fetch_array($check_user);
@@ -20,6 +18,9 @@ if(isset($_POST['submit']))
 
     if(mysqli_num_rows($run)>0)
     {
+        $user = $run->fetch_array();
+        $_SESSION['id'] = $user['id'];
+        $_SESSION['Name'] = $user['Name'];
         echo redirect_to('../');
 
         $_SESSION['UserEmail']=$UserEmail;//here session is used and value of $user_email store in $_SESSION.
@@ -29,6 +30,10 @@ if(isset($_POST['submit']))
     {
         echo "<script>alert('Email or password is incorrect!')</script>";
     }
+}
+if (isset($_POST['remember-me'])){
+    session_set_cookie_params('604800');//one week in seconds
+    session_regenerate_id(true);
 }
 ?>
 
