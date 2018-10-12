@@ -149,8 +149,9 @@ if(isset($_POST['register']))
     $Name=$_POST['Name'];//here getting result from the post array after submitting the form.
     $DisplayName=$_POST['DisplayName'];//same
     $UserEmail=$_POST['UserEmail'];//same
-    $Password= $_POST['Password'];//same
-    $password_hash = md5($Password);
+    $Password = $_POST['Password'];
+    $options=array("cost"=>4);
+    $hash = password_hash($_POST['Password'], PASSWORD_DEFAULT, $options);
     $AccountNumber=$_POST['AccountNumber'];//same
     $BankName=$_POST['$BankName'];//same
     $_SESSION['DisplayName'] = $_POST['DisplayName'];
@@ -197,8 +198,7 @@ echo "<script>alert('Email $UserEmail is already exist in our database, Please t
 exit();
 }
 //insert the user into the database.
-    $Password = md5($Password);
-    $insert_user="insert into users (Name,Password,UserEmail, DisplayName, BankName, AccountNumber) VALUE ('$Name','$Password','$UserEmail', '$DisplayName', '$BankName', '$AccountNumber')";
+    $insert_user="insert into users (Name,Password,UserEmail, DisplayName, BankName, AccountNumber) VALUE ('$Name','$hash','$UserEmail', '$DisplayName', '$BankName', '$AccountNumber')";
     if(mysqli_query($db,$insert_user))
 
     {

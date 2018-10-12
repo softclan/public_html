@@ -4,33 +4,33 @@ include_once('../private/initialize.php');
 
 
 
-if(isset($_POST['submit']))
-{
-    $UserEmail=$_POST['UserEmail'];
-    $Password=$_POST['Password'];
-
-    $check_user="select * from users WHERE UserEmail='$UserEmail'AND Password='$Password'";
-    $query = mysqli_fetch_array($check_user);
-    $status = $query['ActivationStatus'];
-    $run=mysqli_query($db,$check_user);
-
-
-
-    if(mysqli_num_rows($run)>0)
-    {
-        $user = $run->fetch_array();
-        $_SESSION['id'] = $user['id'];
-        $_SESSION['Name'] = $user['Name'];
-        echo redirect_to('../');
-
-        $_SESSION['UserEmail']=$UserEmail;//here session is used and value of $user_email store in $_SESSION.
-
-    }
-    else
-    {
-        echo "<script>alert('Email or password is incorrect!')</script>";
-    }
+if(isset($_POST['submit'])){
+	$UserEmail = trim($_POST['UserEmail']);
+	$Password = trim($_POST['Password']);
+	
+	$sql = "select * from users where UserEmail = '".$UserEmail."'";
+	$rs = mysqli_query($db,$sql);
+	$numRows = mysqli_num_rows($rs);
+	
+	if($numRows  > 0){
+		$row = mysqli_fetch_assoc($rs);
+		if(password_verify($Password,$row['Password'])){
+            $user = $rs->fetch_array();
+            $_SESSION['id'] = $user['id'];
+            $_SESSION['Name'] = $user['Name'];
+            echo redirect_to('../');
+    
+            $_SESSION['UserEmail']=$UserEmail;//here session is used and value of $user_email store in $_SESSION.
+		}
+		else{
+			echo "Wrong Email or Password";
+		}
+	}
+	else{
+		echo "No User found";
+	}
 }
+
 if (isset($_POST['remember-me'])){
     session_set_cookie_params('604800');//one week in seconds
     session_regenerate_id(true);
@@ -161,5 +161,4 @@ if (isset($_POST['remember-me'])){
     </div>
  </section>
         </body>
-            </html>
-
+ </html>
