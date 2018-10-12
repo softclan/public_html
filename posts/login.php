@@ -104,7 +104,7 @@ if (isset($_POST['remember-me'])){
                                     </div>
             
                                     <div>
-                                        <a href="#" class="txt1">
+                                        <a href="./posts/forgot.php" class="txt1">
                                             Forgot Password?
                                         </a>
                                     </div>
