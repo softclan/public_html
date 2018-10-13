@@ -257,6 +257,12 @@
 
   }
 
+  function check_email_query($UserEmail){
+    global $db;
+
+    $check = "SELECT * FROM users WHERE UserEmail='$UserEmail'";
+  $run_query = mysqli_query($db,$check);
+  }
 
 
 

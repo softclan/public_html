@@ -50,13 +50,13 @@ include_once('../private/initialize.php');
                                 </span>
                                 
                                 <div class="wrap-input100 validate-input">
-                                    <input class="input100" type="text" name="Name">
+                                    <input class="input100" type="text" name="Name" required>
                                     <span class="focus-input100"></span>
                                     <span class="label-input100">FullName</span>
                                 </div>
                                                                 
                                 <div class="wrap-input100 validate-input">
-                                    <input class="input100" type="text" name="DisplayName">
+                                    <input class="input100" type="text" name="DisplayName" required>
                                     <span class="focus-input100"></span>
                                     <span class="label-input100">Username</span>
                                 </div>
@@ -68,13 +68,13 @@ include_once('../private/initialize.php');
                                 </div>
                                 
                                 <div class="wrap-input100 validate-input">
-                                    <input class="input100" type="text" name="BankName">
+                                    <input class="input100" type="text" name="BankName" required>
                                     <span class="focus-input100"></span>
                                     <span class="label-input100">Bank Name</span>
                                 </div>
 
                                 <div class="wrap-input100 validate-input">
-                                    <input class="input100" type="text" name="AccountNumber">
+                                    <input class="input100" type="text" name="AccountNumber" required>
                                     <span class="focus-input100"></span>
                                     <span class="label-input100">Account Number</span>
                                 </div>
@@ -86,7 +86,7 @@ include_once('../private/initialize.php');
                                 </div>
             
                                 <div class="wrap-input100 validate-input" data-validate="Password is required">
-                                    <input class="input100" type="password" name="Password2"">
+                                    <input class="input100" type="password" name="Password2" required>
                                     <span class="focus-input100"></span>
                                     <span class="label-input100">Confirm Password</span>
                                 </div>
@@ -146,14 +146,14 @@ include_once('../private/initialize.php');
 
 if(isset($_POST['register']))
 {
-    $Name=$_POST['Name'];//here getting result from the post array after submitting the form.
-    $DisplayName=$_POST['DisplayName'];//same
-    $UserEmail=$_POST['UserEmail'];//same
-    $Password = $_POST['Password'];
+    $Name=trim ($_POST['Name']);//here getting result from the post array after submitting the form.
+    $DisplayName=trim($_POST['DisplayName']);//same
+    $UserEmail=trim($_POST['UserEmail']);//same
+    $Password = trim($_POST['Password']);
     $options=array("cost"=>4);
     $hash = password_hash($_POST['Password'], PASSWORD_DEFAULT, $options);
-    $AccountNumber=$_POST['AccountNumber'];//same
-    $BankName=$_POST['$BankName'];//same
+    $AccountNumber=trim($_POST['AccountNumber']);//same
+    $BankName=trim ($_POST['$BankName']);//same
     $_SESSION['DisplayName'] = $_POST['DisplayName'];
 
     if($Name=='')
@@ -189,9 +189,6 @@ exit();
 
 
 //here query check whether if user already registered so can't register again.
-$check_email_query="select * from users WHERE UserEmail='$UserEmail'";
-$run_query=mysqli_query($db,$check_email_query);
-
 if(mysqli_num_rows($run_query)>0)
 {
 echo "<script>alert('Email $UserEmail is already exist in our database, Please try another one!')</script>";
