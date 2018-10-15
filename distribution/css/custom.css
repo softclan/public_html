@@ -1,0 +1,76 @@
+/* your styles go here */
+.nav-link.register {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    background: #222;
+    border: 2px solid #fff;
+    color: white !important;
+    border-radius: 20px;
+}
+.nav-link.login {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    border-radius: 20px;
+    border: 2px solid #000;
+}
+.navbar-brand.header{
+    font-size: 30px;
+}
+
+#quote-carousel {
+    padding: 0 10px 30px 10px;
+    margin-top: 60px;
+}
+#quote-carousel .carousel-control {
+    background: none;
+    color: #CACACA;
+    font-size: 2.3em;
+    text-shadow: none;
+    margin-top: 30px;
+}
+#quote-carousel .carousel-indicators {
+    position: relative !important;
+    right: 50% !important;
+    top: auto;
+    bottom: 0px;
+    margin-top: 20px;
+    margin-right: -19px;
+}
+#quote-carousel .carousel-indicators li {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    opacity: 0.4;
+    overflow: hidden;
+    transition: all .4s ease-in;
+    vertical-align: middle;
+}
+#quote-carousel .carousel-indicators .active {
+    width: 128px;
+    height: 128px;
+    opacity: 1;
+    transition: all .2s;
+}
+.item blockquote {
+    border-left: none;
+    margin: 0;
+}
+.item blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
+}
+.text-uppercase.text-center.head {
+    margin-top: 50px;
+}
+.goog {
+    margin-left: 30px;
+    margin-top: 10px;
+    font-size: 25px;
+    color: rgb(34, 148, 255);
+}
+
