@@ -8,5 +8,9 @@
 </head>
 <body>
     Thank you for registering with us, check your email to confirm registration.
+<?php
+include_once('../private/initialize.php');
+require_once(SHARED_PATH. '/register_html_header.php');
+echo redirect_to('../'); ?>
 </body>
 </html>
